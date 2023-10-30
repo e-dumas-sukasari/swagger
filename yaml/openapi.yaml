@@ -11,10 +11,10 @@ info:
     url: https://pkg.go.dev/github.com/e-dumas-sukasari/webpasetobackend
   version: 1.0.1
 externalDocs:
-  description: Repo GCF
-  url: https://pasabar.github.io/pasetobackendpasabar/
+  description: Website
+  url: https://e-dumas-sukasari.github.io/
 servers:
-  - url: https://us-central1-pasabar.cloudfunctions.net/pasabar
+  - url: hhttps://asia-southeast2-argon-fire-401902.cloudfunctions.net/
 tags:
   - name: User
     description: Data User
