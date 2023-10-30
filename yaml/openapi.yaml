@@ -77,10 +77,10 @@ components:
       properties:
         _id:
           type: string
-          example: pasabarcoba
+          example: edumas1
         email:
           type: string
-          example: pasabar@gmail.com
+          example: edumas1@gmail.com
         role:
           type: string
           example: admin
@@ -89,10 +89,10 @@ components:
       properties:
         username:
           type: string
-          example: pasabarcoba
+          example: edumas1
         password:
           type: string
-          example: pasabardotcom
+          example: 1234321
     AuthResponse:
       type: object
       properties:
