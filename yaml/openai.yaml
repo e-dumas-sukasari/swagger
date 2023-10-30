@@ -5,10 +5,10 @@ info:
     Dokumen API Cloud Function Aplikasi E-Dumas Sukasari
   termsOfService: https://github.com/e-dumas-sukasari/swagger
   contact:
-    email: ryaasishlah123@gmail.com
+    email: miqbalr18@gmail.com
   license:
-    name: pasetobackend Package
-    url: https://pkg.go.dev/github.com/pasabar/pasetobackendpasabar
+    name: webpasetobackend Package
+    url: https://pkg.go.dev/github.com/e-dumas-sukasari/webpasetobackend
   version: 1.0.1
 externalDocs:
   description: Repo GCF
