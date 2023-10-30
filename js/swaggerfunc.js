@@ -16,5 +16,5 @@ export const UIData = SwaggerUIBundle({
 });
 
 export function setSwagger() {
-    
+    return UIData
 }
