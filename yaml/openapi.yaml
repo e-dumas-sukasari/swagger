@@ -35,7 +35,7 @@ paths:
   /User-Register:
     post:
       tags:
-        - Users
+        - register
       summary: Register User Without Token
       description: Daftar Akun User
       operationId: authService
