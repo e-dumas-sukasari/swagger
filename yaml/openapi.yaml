@@ -7,7 +7,7 @@ info:
   contact:
     email: miqbalr18@gmail.com
   license:
-    name: webpasetobackend Package
+    name: edumasbackend Package
     url: https://pkg.go.dev/github.com/e-dumas-sukasari/webpasetobackend
   version: 1.0.1
 externalDocs:
