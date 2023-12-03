@@ -43,7 +43,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/user'
+              $ref: '#/components/schemas/RegisterUser'
       responses:
         '200':
           description: successful operation
@@ -80,7 +80,7 @@ paths:
             - read:apiKey
 components:
   schemas:
-    User:
+    RegisterUser:
       type: object
       properties:
         _id:
