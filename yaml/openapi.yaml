@@ -9,10 +9,10 @@ info:
   license:
     name: edumasbackend Package
     url: https://pkg.go.dev/github.com/e-dumas-sukasari/edumasbackend
-  version: 1.0.1
+  version: 1.0.11
 externalDocs:
   description: Website
-  url: https://e-dumas-sukasari.github.io/
+  url: https://e-dumas-sukasari.my.id/
 servers:
   - url: hhttps://asia-southeast2-argon-fire-401902.cloudfunctions.net/
 tags:
@@ -20,12 +20,13 @@ tags:
     description: Data User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pasabar.github.io/pasetobackendpasabar/
+      url: https://e-dumas-sukasari.my.id/edumasbackend/
   - name: Auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pasabar.github.io/pasetobackendpasabar/
+      url: https://e-dumas-sukasari.my.id/edumasbackend/
+
 paths:
   user:
     get:
