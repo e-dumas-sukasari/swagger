@@ -50,7 +50,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ResponseRegis'
         '405':
           description: Invalid input
   /User-Login:
@@ -92,6 +92,15 @@ components:
         role:
           type: string
           example: admin
+    ResponseRegis:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: Berhasil
     Login:
       type: object
       properties:
