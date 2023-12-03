@@ -7,45 +7,53 @@ info:
   contact:
     email: miqbalr18@gmail.com
   license:
-    name: webpasetobackend Package
-    url: https://pkg.go.dev/github.com/e-dumas-sukasari/webpasetobackend
-  version: 1.0.1
+    name: edumasbackend Package
+    url: https://pkg.go.dev/github.com/e-dumas-sukasari/edumasbackend
+  version: 1.0.11
 externalDocs:
   description: Website
-  url: https://e-dumas-sukasari.github.io/
+  url: https://e-dumas-sukasari.my.id/
 servers:
-  - url: https://asia-southeast2-argon-fire-401902.cloudfunctions.net
+  - url: https://us-central1-gisiqbal.cloudfunctions.net
 tags:
   - name: User
     description: Data User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pasabar.github.io/pasetobackendpasabar/
+      url: https://e-dumas-sukasari.my.id/edumasbackend/
   - name: Auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pasabar.github.io/pasetobackendpasabar/
+      url: https://e-dumas-sukasari.my.id/edumasbackend/
+  - name: Report
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://e-dumas-sukasari.my.id/edumasbackend/
 paths:
-  user:
-    get:
+  /User-Register:
+    post:
       tags:
-        - User
-      summary: Get user
-      description: List Data User
-      operationId: getUserJSON
+        - register
+      summary: Register User Without Token
+      description: Daftar Akun User
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/User"
-        "400":
-          description: Invalid status value
-  postLoginEDUMAS:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+  /User-Login:
     post:
       tags:
         - Auth
