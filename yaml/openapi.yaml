@@ -26,7 +26,11 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://e-dumas-sukasari.my.id/edumasbackend/
-
+  - name: Report
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://e-dumas-sukasari.my.id/edumasbackend/
 paths:
   user:
     get:
