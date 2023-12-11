@@ -9,20 +9,20 @@ info:
   license:
     name: edumasbackend Package
     url: https://pkg.go.dev/github.com/e-dumas-sukasari/edumasbackend
-  version: 1.0.1
+  version: 1.0.11
 externalDocs:
-  description: Repo Backend
-  url: http://e-dumas-sukasari.my.id/edumasbackend/
+  description: Website
+  url: https://e-dumas-sukasari.my.id/
 servers:
-  - url: https://asia-southeast2-gisiqbal.cloudfunctions.net
+  - url: https://us-central1-gisiqbal.cloudfunctions.net
 tags:
-  - name: Auth
-    description: Authentikasi
+  - name: User
+    description: Data User
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://e-dumas-sukasari.my.id/edumasbackend/
-  - name: Register
-    description: Register Account
+  - name: Auth
+    description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://e-dumas-sukasari.my.id/edumasbackend/
@@ -50,273 +50,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ResponseRegis'
         '405':
           description: Invalid input
   /User-Login:
     post:
       tags:
-        - auth
-      summary: User Login to Get Token
-      description: User Login and Get Token
+        - Auth
+      summary: Login get Token
+      description: Login and Get User Token
       operationId: authService
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Auth'
+              $ref: "#/components/schemas/Login"
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
+                $ref: "#/components/schemas/AuthResponse"
+        "405":
           description: Invalid input
-  /Admin-Login:
-    post:
-      tags:
-        - auth
-      summary: Admin Login to Get Token
-      description: Admin Login and Get Token using Email and Password
-      operationId: adminLoginService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AdminAuth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-
-  /GetAll-DataUser:
-    get:
-      tags:
-        - Data User
-      summary: Get All Data User
-      description: Retrieve all Data User data from the database
-      operationId: GetAllDataUser
       security:
-        - Login: []  # Menentukan bahwa endpoint ini membutuhkan skema keamanan 'Login'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/GetAllDataUser'
-        '401':
-          description: Unauthorized - Admin not logged in
-        '403':
-          description: Forbidden - Admin does not have permission
-        '405':
-          description: Invalid input
-
-  /Insert-Report:
-    post:
-      tags:
-        - report
-      summary: Insert Data Report
-      description: Insert Data Report into the database
-      operationId: insertreport
-      security:
-        - Login: []  # Menentukan bahwa endpoint ini membutuhkan skema keamanan 'Login'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Reports'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-        '401':
-          description: Unauthorized - User not logged in
-        '403':
-          description: Forbidden - User does not have permission
-        '405':
-          description: Invalid input
-
-  /Update-Report:
-    put:
-      tags:
-        - Report
-      summary: Update Report by ID
-      description: Update Data Report in the database by ID
-      operationId: UpdateReport
-      security:
-        - Login: []  # Menentukan bahwa endpoint ini membutuhkan skema keamanan 'Login'
-      parameters:
-        - name: nik
-          in: path
-          description: ID of the Report to update
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Reports'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-        '401':
-          description: Unauthorized - Admin not logged in
-        '403':
-          description: Forbidden - Admin does not have permission
-        '404':
-          description: Not Found - Data Report not found
-        '405':
-          description: Invalid input
-
-  /GetAll-Reports:
-    get:
-      tags:
-        - Report
-      summary: Get All Data Report
-      description: Retrieve all Data Report data from the database
-      operationId: GetAllReports
-      security:
-        - Login: []  # Menentukan bahwa endpoint ini membutuhkan skema keamanan 'Login'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Reports'
-        '401':
-          description: Unauthorized - Admin not logged in
-        '403':
-          description: Forbidden - Admin does not have permission
-        '405':
-          description: Invalid input
-
-  /Delete-Report:
-    delete:
-      tags:
-        - Report
-      summary: delete Data Report berdasarkan nomor id
-      description: delete Report data
-      operationId: delete Report
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Reports' # Gunakan skema yang sesuai di sini
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Response'
-        '400':
-          description: Invalid input or request body
-      security:
-        - Login: []
-
-  /Insert-Tanggapan:
-    post:
-      tags:
-        - Tanggapan Report
-      summary: Insert Data Tanggapan
-      description: Insert Data Tanggapan into the database
-      operationId: insertTanggapan
-      security:
-        - Login: []  # Menentukan bahwa endpoint ini membutuhkan skema keamanan 'Login'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/InsertTanggapan'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-        '401':
-          description: Unauthorized - Admin not logged in
-        '403':
-          description: Forbidden - Admin does not have permission
-        '405':
-          description: Invalid input
-
-
+        - token:
+            - write:apiKey
+            - read:apiKey
 components:
   schemas:
     RegisterUser:
       type: object
       properties:
-        username:
+        _id:
           type: string
-          example: edumasser
-        password:
+          example: edumas1
+        email:
           type: string
-          example: edumasser
-        role:
-          type: string
-          example: user
-
-    AdminAuth:
-      type: object
-      properties:
-        username:
-          type: string
-          example: edumasmin
-        password:
-          type: string
-          example: edumasmin
+          example: edumas1@gmail.com
         role:
           type: string
           example: admin
-
-    Reports:
-      type: object
-      properties:
-        nik:
-          type: integer
-          example: 12121
-        title:
-          type: string
-          example: Kerusakan Jalan
-        description:
-          type: string
-          example: Adanya kerusakan jalan di jalan sariasih dan sekitarnya
-        dateoccurred: 
-          type: integer
-          example: 18122024        
-        image:
-          type: string
-          format: binary
-        Status:
-          type: bool
-          example: true          
-
-    Response:
+    ResponseRegis:
       type: object
       properties:
         status:
@@ -324,68 +100,35 @@ components:
           example: true
         message:
           type: string
-          example: Berhasil Input data
-
-    responseUser:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: true
-        message:
-          type: string
-          example: berhasil ambil data
-        data:
-          type: object
-          properties:
-            username:
-              type: string
-              example: farhan
-            password:
-              type: string
-              example: hashed password
-            role:
-              type: string
-              example: user  
-
-    Auth:
+          example: Berhasil
+    Login:
       type: object
       properties:
         username:
           type: string
-          example: edumasser
+          example: edumas1
         password:
           type: string
-          example: edumasser
-
+          example: 1234321
     AuthResponse:
       type: object
       properties:
         status:
           type: bool
-          example: false
+          example: true
         message:
           type: string
-          example: Selamat Datang
+          example: selamat datang
         token:
           type: string
-          example: edumasser
-
+          example: token
   requestBodies:
     AuthReq:
       description: Request Authentication
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Auth'
-
-    AdminAuthReq:
-      description: Request Admin Authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AdminAuth'
-
+            $ref: "#/components/schemas/Login"
     UserArray:
       description: List of user object
       content:
