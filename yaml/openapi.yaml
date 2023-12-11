@@ -386,13 +386,6 @@ components:
           schema:
             $ref: '#/components/schemas/AdminAuth'
 
-  requestBodies:
-    AuthReq:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Login"
     UserArray:
       description: List of user object
       content:
