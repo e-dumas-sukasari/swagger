@@ -312,19 +312,19 @@ components:
    CreateReport:
       type: object
       properties:
-        nik:
+        Nik:
           type: int
           example: 3273057110006
         Nama:
           type: string
           example: iqbal
-        title:
+        Title:
           type: string
           example: Kecelakaan motor
-        description:
+        Description:
           type: string
           example: Terjadi kecelakaan sepeda motor di jalan sariasih
-        dateoccurred:
+        DateOccurred:
           type: string
           example: 12-01-2024          
         Image:
