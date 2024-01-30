@@ -294,7 +294,30 @@ components:
           type: string
           example: Berhasil Input data
 
-
+   CreateReport:
+      type: object
+      properties:
+        Nik:
+          type: int
+          example: 3273057110006
+        Nama:
+          type: string
+          example: iqbal
+        Title:
+          type: string
+          example: Kecelakaan motor
+        Description:
+          type: string
+          example: Terjadi kecelakaan sepeda motor di jalan sariasih
+        DateOccurred:
+          type: string
+          example: 12-01-2024          
+        Image:
+          type: string
+          example: gambar
+        Status:
+          type: bool
+          example: true
 
     DeleteReport:
       type: object
