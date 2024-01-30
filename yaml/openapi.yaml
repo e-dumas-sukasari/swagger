@@ -249,8 +249,8 @@ components:
           type: string
           example: testimage
         status:
-          type: string
-          example: teststatus
+          type: bool
+          example: true
 
 
     CreateUser:
@@ -291,8 +291,8 @@ components:
           type: string
           example: tesgambar
         status:
-          type: string
-          example: proses
+          type: bool
+          example: true
 
     DeleteReport:
       type: object
@@ -316,8 +316,8 @@ components:
           type: string
           example: tesgambar
         status:
-          type: string
-          example: proses
+          type: bool
+          example: true
 
     AuthReq:
       description: Request Authentication
