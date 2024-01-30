@@ -198,7 +198,7 @@ components:
           type: string
           example: edumasser
 
-    AuthEmail:
+    AuthAdmin:
       type: object
       properties:
         username:
