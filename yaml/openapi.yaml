@@ -14,7 +14,7 @@ externalDocs:
   description: Website
   url: https://e-dumas-sukasari.my.id/
 servers:
-  - url: https://us-central1-gisiqbal.cloudfunctions.net/
+  - url: https://asia-southeast2-gisiqbal.cloudfunctions.net
 tags:
 paths:
   /User-RegisterNew:
