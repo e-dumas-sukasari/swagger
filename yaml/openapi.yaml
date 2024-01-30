@@ -39,7 +39,7 @@ paths:
         '405':
           description: Invalid input
 
-  /User-Loginnew:
+  /Login-Usernew:
     post:
       tags:
         - Login User 
