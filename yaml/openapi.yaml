@@ -9,33 +9,18 @@ info:
   license:
     name: edumasbackend Package
     url: https://pkg.go.dev/github.com/e-dumas-sukasari/edumasbackend
-  version: 1.0.11
+  version: 0.1.3
 externalDocs:
   description: Website
   url: https://e-dumas-sukasari.my.id/
 servers:
   - url: https://us-central1-gisiqbal.cloudfunctions.net/
 tags:
-  - name: auth
-    description: Authentikasi
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://e-dumas-sukasari.my.id/edumasbackend
-  - name: Report
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://e-dumas-sukasari.my.id/edumasbackend
-  - name: Tanggapan
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://e-dumas-sukasari.my.id/edumasbackend
 paths:
   /User-RegisterNew:
     post:
       tags:
-        - register
+        - Register
       summary: Register User 
       description: Data User
       operationId: authService
@@ -377,7 +362,7 @@ components:
               $ref: "#/components/schemas/AuthResponseAdmin"
 
   securitySchemes:
-    token:
+    Login:
       type: apiKey
-      name: token
+      name: Login
       in: header
