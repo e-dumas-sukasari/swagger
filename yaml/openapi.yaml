@@ -25,21 +25,19 @@ paths:
       description: Add new User data
       operationId: create User
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateUser" # Gunakan skema yang sesuai di sini
+              $ref: '#/components/schemas/CreateUser'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                items:
-                  $ref: "#/components/schemas/CreateUser"
-        "400":
-          description: Invalid input or request body
+                $ref: '#/components/schemas/CreateUser'
+        '405':
+          description: Invalid input
 
   /User-Loginnew:
     post:
@@ -104,7 +102,9 @@ paths:
         "400":
           description: Invalid status value
       security:
-        - Login: []
+        - Login:
+          - write:apiKey
+          - read:apiKey
 
   /Insert-Report:
     post:
@@ -130,7 +130,9 @@ paths:
         "400":
           description: Invalid input or request body
       security:
-        - Login: []
+        - Login:
+          - write:apiKey
+          - read:apiKey
 
   /Update-Report:
     put:
@@ -156,7 +158,9 @@ paths:
         "400":
           description: Invalid input or request body
       security:
-        - Login: []
+        - Login:
+          - write:apiKey
+          - read:apiKey
 
   /Delete-Report:
     delete:
@@ -182,7 +186,9 @@ paths:
         "400":
           description: Invalid input or request body
       security:
-        - Login: []
+        - Login:
+          - write:apiKey
+          - read:apiKey
 
 
 
