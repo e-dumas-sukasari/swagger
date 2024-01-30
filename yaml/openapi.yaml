@@ -38,6 +38,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
+
   /User-Loginnew:
     post:
       tags:
@@ -63,6 +64,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
+
   /Admin-Login:
     post:
       tags:
@@ -113,7 +115,7 @@ paths:
         '400':
           description: Invalid input or request body
       security:
-        - Login: []
+        - Login: []  
 
   /Update-Report:
     put:
@@ -165,7 +167,7 @@ paths:
         '400':
           description: Invalid input or request body
       security:
-        - Login: []      
+        - Login: []
 
   /Insert-Tanggapan:
     post:
@@ -215,6 +217,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
+
   /GetOneReport:
     get:
       tags:
@@ -242,6 +245,8 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
+
+
 
 components:
   schemas:
@@ -327,7 +332,6 @@ components:
           example: 1232123
 
 
-  AuthReq:
     AuthReq:
       description: Request Authentication
       content:
@@ -335,8 +339,7 @@ components:
           schema:
             $ref: "#/components/schemas/User"
     
-  AuthReqAdmin:
-    AuthReq:
+    AuthReqAdmin:
       description: Request Authentication
       content:
         application/json:
