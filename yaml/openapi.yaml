@@ -20,37 +20,39 @@ paths:
   /User-RegisterNew:
     post:
       tags:
-        - Register
-      summary: Register User 
-      description: Data User
-      operationId: authService
+        - Register User
+      summary: Register User Account
+      description: Add new User data
+      operationId: create User
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: "#/components/schemas/CreateUser" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
+                items:
+                  $ref: "#/components/schemas/CreateUser"
+        "400":
+          description: Invalid input or request body
 
   /User-Loginnew:
     post:
       tags:
-        - Auth
-      summary: Login User
-      description: Data User
+        - Login User 
+      summary: Login get Token
+      description: Login and Get User Token
       operationId: authService
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/User"
+              $ref: "#/components/schemas/Auth"
       responses:
         "200":
           description: successful operation
@@ -60,36 +62,49 @@ paths:
                 $ref: "#/components/schemas/AuthResponse"
         "405":
           description: Invalid input
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-
+  
   /Admin-Login:
     post:
       tags:
-        - Auth
-      summary: Login Admin
-      description: Data Admin
+        - Login Admin
+      summary: Login get Token
+      description: Login and Get User Token
       operationId: authService
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Admin"
+              $ref: "#/components/schemas/AuthAdmin"
       responses:
         "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AuthResponseAdmin"
+                $ref: "#/components/schemas/AuthResponse"
         "405":
           description: Invalid input
+
+  /GetAll-Reports:
+    get:
+      tags:
+        - Data Report
+      summary: Get Data Report
+      description: List Data Report
+      operationId: GetAllDataReport
+      responses:
+        "200":
+          description: successful operation Report
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CreateReport"
+        "400":
+          description: Invalid status value
       security:
-        - token:
-            - write:apiKey
-            - read:apiKey
+        - Login: []
 
   /Insert-Report:
     post:
@@ -103,25 +118,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateReport' # Gunakan skema yang sesuai di sini
+              $ref: "#/components/schemas/CreateReport" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/CreateReport'
-        '400':
+                  $ref: "#/components/schemas/CreateReport"
+        "400":
           description: Invalid input or request body
       security:
-        - Login: []  
+        - Login: []
 
   /Update-Report:
     put:
       tags:
         - Report
-      summary: Updated Report Data berdasarkan nomor nik
+      summary: Updated Report Data berdasarkan nik
       description: Updated Report data
       operationId: Updated Report
       requestBody:
@@ -129,16 +144,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Report' # Gunakan skema yang sesuai di sini
+              $ref: "#/components/schemas/Reports" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/CreateReport'
-        '400':
+                  $ref: "#/components/schemas/CreateReport"
+        "400":
           description: Invalid input or request body
       security:
         - Login: []
@@ -147,7 +162,7 @@ paths:
     delete:
       tags:
         - Report
-      summary: delete Report Data berdasarkan nomor nik
+      summary: delete Report Data berdasarkan nik
       description: delete Report data
       operationId: delete Report
       requestBody:
@@ -155,205 +170,231 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteReport' # Gunakan skema yang sesuai di sini
+              $ref: "#/components/schemas/DeleteReport" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/CreateReport'
-        '400':
+                  $ref: "#/components/schemas/CreateReport"
+        "400":
           description: Invalid input or request body
       security:
         - Login: []
 
-  /Insert-Tanggapan:
+  /insertparkiranemail:
     post:
       tags:
-        - Report
-      summary: Create Report Data
-      description: Add new Report data
-      operationId: create Report
+        - Parkiran Email
+      summary: Create Parkiran Data
+      description: Add new Parkiran data
+      operationId: create Parkiran
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateReport' # Gunakan skema yang sesuai di sini
+              $ref: "#/components/schemas/CreateParkiran" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/CreateReport'
-        '400':
+                  $ref: "#/components/schemas/CreateParkiran"
+        "400":
           description: Invalid input or request body
       security:
         - Login: []
 
-  /GetAll-Reports:
-    get:
+  /updateparkiranemail:
+    put:
       tags:
-        - Report
-      summary: Get All Report Data
-      description: Get all data of Report
-      operationId: getAllDataReport
+        - Parkiran Email
+      summary: Updated Parkiran Data berdasarkan nomor id
+      description: Updated Parkiran data
+      operationId: Updated Parkiran
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/parkiran" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
-          description: Successful operation
+        "200":
+          description: successful operation
           content:
             application/json:
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/CreateReport'
-        '405':
-          description: Invalid input
+                  $ref: "#/components/schemas/CreateParkiran"
+        "400":
+          description: Invalid input or request body
       security:
-        - login:
-          - write:apiKey
-          - read:apiKey
+        - Login: []
 
-  /GetOneReport:
-    get:
+  /deleteparkiranemail:
+    delete:
       tags:
-        - Report
-      summary: Get One Report Data
-      description: Get one data of Report by ID
-      operationId: getOneDataReport
-      parameters:
-        - name: Id
-          in: path
-          required: true
-          description: ID of the Report
-          schema:
-            type: string
+        - Parkiran Email
+      summary: delete Parkiran Data berdasarkan nomor id
+      description: delete Parkiran data
+      operationId: delete Parkiran
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteParkiran" # Gunakan skema yang sesuai di sini
       responses:
-        '200':
-          description: Successful operation
+        "200":
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Report'
-        '404':
-          description: Report not found
+                items:
+                  $ref: "#/components/schemas/CreateParkiran"
+        "400":
+          description: Invalid input or request body
       security:
-        - login:
-          - write:apiKey
-          - read:apiKey
-
-
+        - Login: []  
 
 components:
   schemas:
-    user:
+    Auth:
       type: object
       properties:
         username:
           type: string
-          example : edumasser
+          example: edumasser
         password:
           type: string
           example: edumasser
-        notelp:
+
+    AuthEmail:
+      type: object
+      properties:
+        username:
           type: string
-          example: string
-        role:
+          example: edumasmin
+        password:
           type: string
-          example: user
+          example: edumasmin
 
     AuthResponse:
       type: object
       properties:
         status:
           type: bool
-          example: true
+          example: false
         message:
           type: string
-          example: Berhasil Input data
+          example: Selamat Datang User
+        token:
+          type: string
+          example: alagabres
 
-    admin:
+    GetDataReport:
+      type: object
+      properties:
+        nik:
+          type: int
+          example: 123123
+        nama:
+          type: string
+          example: ujang
+        title:
+          type: string
+          example: testtitle
+        description:
+          type: string
+          example: testdescription
+        dateOccurred:
+          type: string
+          example: testdateOccurred 
+        image:
+          type: string
+          example: testimage
+        status:
+          type: string
+          example: teststatus
+
+
+    CreateUser:
       type: object
       properties:
         username:
           type: string
-          example : edumasmin
+          example: edumasser
         password:
           type: string
-          example: edumasmin
+          example: edumasser
+        notelp:
+          type: string
+          example: 089791212121
         role:
           type: string
-          example: admin
+          example: user
 
-    AuthResponseAdmin:
+    CreateReport:
       type: object
       properties:
-        status:
-          type: bool
-          example: true
-        message:
-          type: string
-          example: Berhasil Input data
-
-   CreateReport:
-      type: object
-      properties:
-        Nik:
+        nik:
           type: int
-          example: 3273057110006
-        Nama:
+          example: 3273093123123123
+        nama:
           type: string
           example: iqbal
-        Title:
+        title:
           type: string
-          example: Kecelakaan motor
-        Description:
+          example: pencurian
+        description:
           type: string
-          example: Terjadi kecelakaan sepeda motor di jalan sariasih
-        DateOccurred:
+          example: terjadi pencurian motor di kosan sarijadi
+        dateOccured:
           type: string
-          example: 12-01-2024          
-        Image:
+          example: 18-02-2024
+        image:
           type: string
-          example: gambar
-        Status:
-          type: bool
-          example: true
+          example: tesgambar
+        status:
+          type: string
+          example: proses
 
     DeleteReport:
       type: object
       properties:
         nik:
           type: int
-          example: 1232123
-
+          example: 3273093123123123
+        nama:
+          type: string
+          example: iqbal ganteng
+        title:
+          type: string
+          example: pencurian motor
+        description:
+          type: string
+          example: terjadi pencurian motor di kosan sarijadi
+        dateOccured:
+          type: string
+          example: 19-02-2024
+        image:
+          type: string
+          example: tesgambar
+        status:
+          type: string
+          example: proses
 
     AuthReq:
       description: Request Authentication
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/User"
-    
-    AuthReqAdmin:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Admin"
-
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "#/components/schemas/AuthResponse"
+            $ref: "#/components/schemas/Auth"
 
     AdminArray:
       description: List of user object
@@ -362,8 +403,7 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/schemas/AuthResponseAdmin"
-
+              $ref: "#/components/schemas/AuthResponse"
   securitySchemes:
     Login:
       type: apiKey
