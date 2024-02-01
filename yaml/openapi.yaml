@@ -202,7 +202,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/User" # Gunakan skema yang sesuai di sini
+              $ref: "#/components/schemas/CreateUser" # Gunakan skema yang sesuai di sini
       responses:
         "200":
           description: successful operation
