@@ -190,7 +190,33 @@ paths:
           - write:apiKey
           - read:apiKey
 
-
+  /Update-User:
+    put:
+      tags:
+        - User
+      summary: Updated User Data berdasarkan username
+      description: Updated User data
+      operationId: Updated User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User" # Gunakan skema yang sesuai di sini
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CreateUser"
+        "400":
+          description: Invalid input or request body
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
 
 components:
   schemas:
@@ -265,6 +291,22 @@ components:
         notelp:
           type: string
           example: 089791212121
+        role:
+          type: string
+          example: user
+
+    CreateUser:
+      type: object
+      properties:
+        username:
+          type: string
+          example: edumasser
+        password:
+          typle: string
+          example: edumasser
+        notelp:
+          type: string
+          example: 081212121212121
         role:
           type: string
           example: user
