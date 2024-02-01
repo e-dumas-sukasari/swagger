@@ -278,7 +278,6 @@ components:
           type: bool
           example: true
 
-
     CreateUser:
       type: object
       properties:
@@ -291,22 +290,6 @@ components:
         notelp:
           type: string
           example: 089791212121
-        role:
-          type: string
-          example: user
-
-    CreateUser:
-      type: object
-      properties:
-        username:
-          type: string
-          example: edumasser
-        password:
-          typle: string
-          example: edumasser
-        notelp:
-          type: string
-          example: 081212121212121
         role:
           type: string
           example: user
